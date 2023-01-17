@@ -1,0 +1,30 @@
+spring:
+#  cloud:
+#    loadbalancer:
+#      ribbon:
+#        enable: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_rpa
+    username: root
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: none
+      use-new-id-generator-mappings: true
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    generate-ddl: false
+    database-platform: org.hibernate.dialect.MySQLDialect
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: false
+        jdbc.lob.non_contextual_creation: true
+        generate_statistics: false
+      open-in-view: false
+
+server:
+  port: 9510
+  servlet:
+    context-path: /bots-ms-rpa/api
