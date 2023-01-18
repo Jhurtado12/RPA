@@ -9,12 +9,23 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @Table(name = "usuario")
-@Data
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class Usuario {
 
@@ -29,18 +40,19 @@ public class Usuario {
 	
 	private String email;
 	
-	private String telefono;
+	private Long telefono;
 	
 	@ManyToOne
 	@JoinColumn(name = "empresas_idEmpresa")
 	private Empresa empresa;
 	
 	@ManyToOne
-	@JoinColumn(name = "rol_idRol")
+	@JoinColumn(name = "rol_idRol", insertable = false, updatable = false)
 	private Rol rol;
 	
+	@JsonBackReference
 	@ManyToOne
-	@JoinColumn(name = "area_idArea")
+	@JoinColumn(name = "area_idArea", insertable = false, updatable = false)
 	private Area area;
 	
 }

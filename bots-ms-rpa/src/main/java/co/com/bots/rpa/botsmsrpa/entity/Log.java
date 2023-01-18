@@ -2,6 +2,7 @@ package co.com.bots.rpa.botsmsrpa.entity;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,18 +13,27 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @Table(name = "logs")
-@Data
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class Log {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idRobot")
+	@Column(name = "idLog")
 	private Long id;
 	
 	private String valor;
@@ -41,7 +51,7 @@ public class Log {
 	private Evento evento;
 	
 	@ManyToOne
-	@JoinColumn(name = "usuario_idUsurio")
+	@JoinColumn(name = "usuario_idUsuario")
 	private Usuario usuario;
 
 }
